@@ -27,7 +27,7 @@ public class CounterAspect {
 
     @Before("countMethodCall()")
     public void countMethodCall(JoinPoint pointcut) {
-        String methodName = pointcut.getTarget().toString();
+        String methodName = pointcut.getSignature().getName();
         int methodCallCount = counterService.count(methodName);
 
         logger.info("{} : {}", methodName, methodCallCount);
