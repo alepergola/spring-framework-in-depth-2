@@ -1,7 +1,6 @@
-package com.github.alepergola.spring_framework_in_depth_2;
+package com.github.alepergola.spring_framework_in_depth_2.service;
 
 
-import com.github.alepergola.spring_framework_in_depth_2.service.CounterService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
