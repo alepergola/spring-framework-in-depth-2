@@ -14,9 +14,13 @@ public class CounterService {
     }
 
     public Integer count(String methodName) {
-        int methodCount = methodMap.getOrDefault(methodName, 0);
+        int methodCount = get(methodName);
         methodMap.put(methodName, ++methodCount);
         return methodCount;
+    }
+
+    public Integer get(String methodName) {
+        return methodMap.getOrDefault(methodName, 0);
     }
 
 
