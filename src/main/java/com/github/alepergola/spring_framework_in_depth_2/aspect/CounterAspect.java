@@ -21,7 +21,7 @@ public class CounterAspect {
         this.counterService = counterService;
     }
 
-    @Pointcut("@annotation(Counter)")
+    @Pointcut("@annotation(com.github.alepergola.spring_framework_in_depth_2.annotation.Counter)")
     public void countMethodCall() {
     }
 
