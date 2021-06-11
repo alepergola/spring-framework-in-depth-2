@@ -2,7 +2,6 @@ package com.github.alepergola.spring_framework_in_depth_2.aspect;
 
 import com.github.alepergola.spring_framework_in_depth_2.config.ApplicationConfiguration;
 import com.github.alepergola.spring_framework_in_depth_2.service.CounterService;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +26,11 @@ public class CounterAspectTest {
     public CounterAspectTest(CounterService counterService, TestClass testClass) {
         this.counterService = counterService;
         this.testClass = testClass;
+    }
+
+    @BeforeEach
+    void setup() {
+        counterService.reset();
     }
 
     @Test

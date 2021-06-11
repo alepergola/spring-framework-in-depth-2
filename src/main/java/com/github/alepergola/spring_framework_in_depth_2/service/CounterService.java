@@ -23,5 +23,8 @@ public class CounterService {
         return methodMap.getOrDefault(methodName, 0);
     }
 
+    public void reset() {
+        methodMap.clear();
+    }
 
 }

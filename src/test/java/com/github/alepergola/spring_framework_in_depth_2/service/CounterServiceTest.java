@@ -31,6 +31,37 @@ public class CounterServiceTest {
     }
 
     @Test
+    void reset_whenNoCall_return0() {
+        counterService.reset();
+        assertEquals(0, counterService.get(METHOD_NAME_1));
+        assertEquals(0, counterService.get(METHOD_NAME_2));
+        assertEquals(0, counterService.get(METHOD_NAME_3));
+    }
+
+    @Test
+    void reset_whenOneCall_return1() {
+        counterService.count(METHOD_NAME_2);
+        counterService.reset();
+        assertEquals(0, counterService.get(METHOD_NAME_1));
+        assertEquals(0, counterService.get(METHOD_NAME_2));
+        assertEquals(0, counterService.get(METHOD_NAME_3));
+    }
+
+    @Test
+    void reset_whenMultipleCall_return0() {
+        counterService.count(METHOD_NAME_1);
+        counterService.count(METHOD_NAME_2);
+        counterService.count(METHOD_NAME_2);
+        counterService.count(METHOD_NAME_3);
+        counterService.count(METHOD_NAME_3);
+        counterService.count(METHOD_NAME_3);
+        counterService.reset();
+        assertEquals(0, counterService.get(METHOD_NAME_1));
+        assertEquals(0, counterService.get(METHOD_NAME_2));
+        assertEquals(0, counterService.get(METHOD_NAME_3));
+    }
+
+    @Test
     void count_whenCalledWithNull_return1() {
         int count = counterService.count(null);
         assertEquals(1, count);
