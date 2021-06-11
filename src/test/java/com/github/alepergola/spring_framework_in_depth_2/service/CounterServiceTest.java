@@ -20,6 +20,17 @@ public class CounterServiceTest {
     }
 
     @Test
+    void get_whenNoCall_return0() {
+        assertEquals(0, counterService.get(METHOD_NAME_3));
+    }
+
+    @Test
+    void get_whenOneCall_return1() {
+        counterService.count(METHOD_NAME_2);
+        assertEquals(1, counterService.get(METHOD_NAME_2));
+    }
+
+    @Test
     void count_whenCalledWithNull_return1() {
         int count = counterService.count(null);
         assertEquals(1, count);
