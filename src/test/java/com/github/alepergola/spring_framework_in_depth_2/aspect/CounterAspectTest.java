@@ -2,6 +2,8 @@ package com.github.alepergola.spring_framework_in_depth_2.aspect;
 
 import com.github.alepergola.spring_framework_in_depth_2.config.ApplicationConfiguration;
 import com.github.alepergola.spring_framework_in_depth_2.service.CounterService;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,9 @@ public class CounterAspectTest {
     private final CounterService counterService;
 
     @Autowired
-    public CounterAspectTest(CounterService counterService) {
+    public CounterAspectTest(CounterService counterService, TestClass testClass) {
         this.counterService = counterService;
-        this.testClass = new TestClass();
+        this.testClass = testClass;
     }
 
     @Test

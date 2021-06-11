@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -17,6 +18,7 @@ public class CounterAspect {
 
     private final CounterService counterService;
 
+    @Autowired
     public CounterAspect(CounterService counterService) {
         this.counterService = counterService;
     }
@@ -26,7 +28,7 @@ public class CounterAspect {
     }
 
     @Before("countMethodCall()")
-    public void countMethodCall(JoinPoint pointcut) {
+    public void countMethodCallImpl(JoinPoint pointcut) {
         String methodName = pointcut.getSignature().getName();
         int methodCallCount = counterService.count(methodName);
 
